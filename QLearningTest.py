@@ -9,7 +9,7 @@ def discretize(observation, bins):
     return tuple([int(np.digitize(observation[i], bins[i])) for i in range(len(observation))])
 
 
-def myTest(policy_filename, env, episodes, step, discrete_util):
+def my_test(policy_filename, env, episodes, step, discrete_util):
     bins = discrete_util()
     history_reward = []
     policy = np.load(policy_filename).item()
@@ -52,7 +52,7 @@ def plot_reward(history_reward):
 
 
 def test_cartpole():
-    cartpole = MyQLearning.CartPole()
+    cartpole = QLearning.CartPole()
     policy_filename = "policy/policy_9600.npy"
     env = gym.make('CartPole-v0')
 
@@ -60,11 +60,11 @@ def test_cartpole():
     env = Monitor(env, "video", force=True)
     episodes = 1000
     step = 20000
-    myTest(policy_filename, env, episodes, step, cartpole.discrete_util)
+    my_test(policy_filename, env, episodes, step, cartpole.discrete_util)
 
 
 def test_mountaincar():
-    mountaincar = MyQLearning.MountainCar()
+    mountaincar = QLearning.MountainCar()
     policy_filename = "policy/policy_5300.npy"
     env = gym.make('MountainCar-v0')
 
@@ -72,11 +72,11 @@ def test_mountaincar():
     #env = Monitor(env, "video", force=True)
     episodes = 1000
     step = 2000
-    myTest(policy_filename, env, episodes, step, mountaincar.discrete_util)
+    my_test(policy_filename, env, episodes, step, mountaincar.discrete_util)
 
 
 def test_acrobot():
-    acrobot = MyQLearning.Acrobot()
+    acrobot = QLearning.Acrobot()
     policy_filename = "policy/policy_9900.npy"
     env = gym.make('Acrobot-v1')
 
@@ -84,7 +84,7 @@ def test_acrobot():
     #env = Monitor(env, "video", force=True)
     episodes = 1000
     step = 2000
-    myTest(policy_filename, env, episodes, step, acrobot.discrete_util)
+    my_test(policy_filename, env, episodes, step, acrobot.discrete_util)
 
 
 def main():
