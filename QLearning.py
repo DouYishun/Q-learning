@@ -1,5 +1,4 @@
 import gym
-from gym.wrappers import Monitor
 import numpy as np
 import matplotlib.pyplot as plt
 from collections import defaultdict
@@ -84,7 +83,6 @@ def plot_reward(history_reward):
 class CartPole:
     def __init__(self):
         self.env = gym.make('CartPole-v0')
-        #self.env = Monitor(self.env, "cartpole", force=True)
         self.env = self.env.unwrapped
 
     @staticmethod
@@ -102,14 +100,6 @@ class CartPole:
         return bins
 
     def run(self):
-        """
-        best paras:
-        alpha, gamma, epsilon, epsilon_decay = 0.06, 0.9, 0.5, 0.99, -20000
-        PENALTY = -20000貌似penalty需要调高！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
-
-        5000
-        :return:
-        """
         alpha, gamma, epsilon, epsilon_decay, epsilon_min, penalty = 0.06, 0.9, 1.0, 0.99, 0.01, -2000
         episodes, step = 10000, 20000
 
@@ -142,14 +132,6 @@ class MountainCar:
         return bins
 
     def run(self):
-        """
-        best paras:
-        alpha, gamma, epsilon, epsilon_decay, penalty = 0.06, 0.9, 0.5, 0.99, -2000
-        PENALTY = -2000
-
-        5000
-        :return:
-        """
         alpha, gamma, epsilon, epsilon_decay, epsilon_min, penalty = 0.06, 0.9, 0.5, 0.99, 0.01, 2000
         episodes, step = 10000, 2000
 
