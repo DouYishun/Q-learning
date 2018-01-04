@@ -2,7 +2,7 @@ import gym
 import matplotlib.pyplot as plt
 import numpy as np
 from gym.wrappers import Monitor
-import MyQLearning
+import QLearning
 
 
 def discretize(observation, bins):
